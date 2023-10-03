@@ -1,0 +1,17 @@
+.header_cont{
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1.5px solid #eee;
+    width: 100vw;
+}
+.header_cont h4{
+    text-align: end;
+    font-weight: 200;
+    color: #555;
+    column-count: 1;
+    font-size: 15px;
+}
+.header_cont img{
+    width: 70px;
+}

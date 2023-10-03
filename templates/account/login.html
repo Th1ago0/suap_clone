@@ -1,0 +1,80 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block head %}
+    <title> - SUAP: Sistema Unificado de Administração Pública </title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css" media="all" />
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% include '../partials/_header.html' %}
+    <div class="error_cont">
+        {% if error_message %} 
+            <div class="error_message">
+                <h4>
+                    {{error_message}}
+                </h4>
+            </div>
+        {% endif %}
+    </div>
+    <section class="login_cont">
+        <div class="title_cont">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 0 448 512"
+            >
+                <style>
+                    svg {
+                        fill: #9f9f9f;
+                    }
+                </style>
+                <path
+                    d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"
+                />
+            </svg>
+            <h2>Login IFRN</h2>
+        </div>
+        <form
+            action="{% url 'login_view' %}"
+            method="POST"
+            accept-charset="utf-8"
+            class="form"
+        >
+            {% csrf_token %}
+            <div class="inputs">
+                <div class="labels">
+                    <label for="user">Usuário:</label>
+                </div>
+                {{ form.user_code }}
+                <div class="labels">
+                    <label for="password">Senha:</label>
+                </div>
+                {{ form.password }}
+            </div>
+            <div class="cont_button">
+                <button type="submit">Acessar</button>
+            </div>
+            <div class="change_pass">
+                <a href="{% url 'change_pass' %}"> Esqueceu ou deseja alterar sua senha? </a>
+            </div>
+        </form>
+        <span class="or">
+            <hr />
+            ou
+            <hr />
+        </span>
+        <div class="login_gov">
+            <div>
+                <span> Entrar com </span>
+                <span class="gov_1 govs">g</span>
+                <span class="gov_2 govs">o</span>
+                <span class="gov_3 govs">v</span>
+                <span class="gov_4 govs">.</span>
+                <span class="gov_5 govs">b</span>
+                <span class="gov_6 govs">r</span>
+            </div>
+        </div>
+    </section>
+    {% include '../partials/_footer.html' %}
+</div>
+{% endblock %}
